@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include "lib/cJSON.h"
+#include "terminal.c"
 
 char* read_config(const char *filepath) {
     FILE *file = fopen(filepath, "r");
@@ -42,6 +43,9 @@ int main() {
     scanf(" %c", &kernel_config);
     kernel_config = tolower(kernel_config);
 
+    int maxprocessesint;
+    int maxthreadsperprocessint;
+
     if (kernel_config == 'y') {
         printf("Configuring kernel...\n");
         printf("Kernel configuration will hopefully be added eventually!\n");
@@ -55,11 +59,12 @@ int main() {
             printf("Error parsing JSON.\n");
             return 1;
         }
-        
+
         // Get max processes value from kernel.json
         cJSON *maxprocesses = cJSON_GetObjectItem(json, "max-processes");
         if (cJSON_IsNumber(maxprocesses)) {
-            printf("Max Processes: %d\n", (int)maxprocesses->valueint);
+            maxprocessesint = (int)maxprocesses->valueint;
+            printf("Max Processes: %d\n", maxprocessesint);
         } else {
             printf("Error: max-processes is not defined or there was an error parsing!\n");
             exit(1);
@@ -68,7 +73,8 @@ int main() {
         // Get max threads per process value from kernel.json
         cJSON *maxthreadsperprocess = cJSON_GetObjectItem(json, "max-threads-per-process");
         if (cJSON_IsNumber(maxthreadsperprocess)) {
-            printf("Max Threads per Process: %d\n", (int)maxthreadsperprocess->valueint);
+            maxthreadsperprocessint = (int)maxthreadsperprocess->valueint;
+            printf("Max Threads per Process: %d\n", maxthreadsperprocessint);
         } else {
             printf("Error: max-threads-per-process is not defined or there was an error parsing!\n");
             exit(1);
@@ -77,6 +83,9 @@ int main() {
         free(kerneljson);
         cJSON_Delete(json);
     }
+
+    int processes = 1;
+    osmain(&processes, maxprocessesint, maxthreadsperprocessint);
 
     return 0;
 }
