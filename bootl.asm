@@ -3,10 +3,8 @@ section .text
     extern kernel_start
 
 bootloader_start:
-    ; Call the kernel function
     call kernel_start
 
-    ; Infinite loop to prevent exiting
     jmp $
 
 section .data

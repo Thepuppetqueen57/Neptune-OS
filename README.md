@@ -3,6 +3,8 @@ Neptune OS is a fake Operating System.
 
 I call it a fake os because it has the same structure as an os. It has a bootloader and kernel.
 
+Bootl is the boot file for linux and bootw is the boot file for windows. I dont know if bootw works though.
+
 # How to use
 ## Linux
 ### Normal
@@ -16,8 +18,6 @@ If it doesnt work then install makefile I think it comes preinstalled with linux
 You can also just run compile.sh and run the file it gave you.
 
 ## Windows/Mac
-I dont think I'll ever add support for windows or mac cuz this is just a personal project I made for fun.
+Just run makefile on windows it will detect that your on windows
 
-Also if you want to run this on windows you will have to modify boot.asm a bit.
-
-Feel free to make a pull request with a modified version that works on all os's.
+Also for now there wont be a compile.ps1
