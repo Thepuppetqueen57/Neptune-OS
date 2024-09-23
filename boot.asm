@@ -8,5 +8,5 @@ bootloader_start:
     jmp $
 
 section .data
-message db 'Hello from the fake kernel!', 0xA  ; message with newline
+message db 'Hello from the fake kernel!', 0xA
 message_length equ $ - message

@@ -13,12 +13,10 @@ char* read_config(const char *filepath) {
         return NULL;
     }
 
-    // Get the file size
     fseek(file, 0, SEEK_END);
     filesize = ftell(file);
-    rewind(file); // Reset file pointer to the beginning
+    rewind(file);
 
-    // Allocate memory for the file contents
     content = (char *)malloc((filesize + 1) * sizeof(char));
     if (content == NULL) {
         printf("Error: Memory allocation failed\n");
@@ -26,9 +24,8 @@ char* read_config(const char *filepath) {
         return NULL;
     }
 
-    // Read the file into the content buffer
     fread(content, sizeof(char), filesize, file);
-    content[filesize] = '\0'; // Null-terminate the string
+    content[filesize] = '\0';
 
     fclose(file);
     return content;
@@ -77,8 +74,8 @@ int main() {
             exit(1);
         }
         
-        free(kerneljson);  // Don't forget to free the allocated memory
-        cJSON_Delete(json); // Clean up the cJSON object
+        free(kerneljson);
+        cJSON_Delete(json);
     }
 
     return 0;
