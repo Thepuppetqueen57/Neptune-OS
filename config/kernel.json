@@ -1,0 +1,4 @@
+{
+    "max-processes": 10,
+    "max-threads-per-process": 10
+}

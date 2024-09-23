@@ -1,34 +1,35 @@
-# Detect the platform
-OS := $(shell uname)
-
 # Default target
-all: build clean1 run clean2
+all: run
 
-# Build commands
-ifeq ($(OS), Linux)
-    TARGET := Neptune
-    BUILD_CMD := \
-        nasm -f elf32 bootl.asm -o boot.o && \
-        gcc -m32 -c kernel.c -o kernel.o && \
-        gcc -m32 boot.o kernel.o -o $(TARGET)
-    RUN_CMD := ./$(TARGET)
-else
-    TARGET := Neptune.exe
-    BUILD_CMD := \
-        nasm -f win32 bootw.asm -o boot.o && \
-        gcc -m32 -c kernel.c -o kernel.o && \
-        gcc -m32 boot.o kernel.o -o $(TARGET)
-    RUN_CMD := cmd /c $(TARGET)
-endif
-
+# Targets
 build:
-	$(BUILD_CMD)
+	@echo "Building Neptune..."
+	@if [ ! -f Neptune ]; then \
+		echo "Cleaning up old object files..."; \
+		rm -f boot.o kernel.o cJSON.o; \
+	fi; \
+
+	@nasm -f elf32 boot.asm -o boot.o && \
+	gcc -m32 -c kernel.c -o kernel.o && \
+	gcc -m32 -c lib/cJSON.c -o cJSON.o && \
+	gcc -m32 boot.o kernel.o cJSON.o -o Neptune
+
+	@make clean1
 
 clean1:
-	rm -f boot.o kernel.o
+	@rm -f boot.o kernel.o cJSON.o
 
 run:
-	$(RUN_CMD)
+	@make build
+	@./Neptune
+	@make clean1
+	@make clean2
 
 clean2:
-	rm -f $(TARGET)
+	@rm -f Neptune
+
+clean:
+	@make clean1
+	@make clean2
+
+.PHONY: all build clean1 run clean2

@@ -11,15 +11,22 @@ Bootl is the boot file for linux and bootw is the boot file for windows. I dont 
 Download the latest release and run it (lol)
 
 ### Compiling
-Download the source and then install gcc and nasm and then go into your terminal and run `make` in the directory you put neptune in.
+Download the source and then install gcc and nasm and then go into your terminal and run `make run` in the directory you put neptune in.
 
 If it doesnt work then install makefile I think it comes preinstalled with linux tho.
 
-You can also just run compile.sh and run the file it gave you.
-
 ## Windows/Mac
-**WINDOWS DOES NOT WORK AND I DONT KNOW WHEN IT WILL IF EVER!!**
+Windows and mac are not supported and will almost definitely never be.
 
-Just run makefile on windows it will detect that your on windows
+This is just a simple hobby project I am making for fun. I dont wanna bother myself with that stuff.
 
-Also for now there wont be a compile.ps1
+# Makefile
+Basically the makefile has 3 options.
+
+- Run
+- Build
+- Clean
+
+Run well it runs Neptune OS and build compiles the os without running it and clean deletes all the .o files and stuff.
+
+To use the makefile just run `make [option]` also make sure you have makefile installed.
