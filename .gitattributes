@@ -1,0 +1,3 @@
+# Makes the github language graph ignore cJSON
+lib/cJSON.c linguist-vendored
+lib/cJSON.h linguist-vendored
