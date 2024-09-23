@@ -5,6 +5,7 @@
 
 int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
     char cmd[100];
+    printf("Welcome to Neptune OS! Type 'help' for a list of commands.\n");
     while (1) {
         printf("> ");
         scanf("%99s", cmd);
