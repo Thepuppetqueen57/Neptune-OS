@@ -18,6 +18,8 @@ If it doesnt work then install makefile I think it comes preinstalled with linux
 You can also just run compile.sh and run the file it gave you.
 
 ## Windows/Mac
+**WINDOWS DOES NOT WORK AND I DONT KNOW WHEN IT WILL IF EVER!!**
+
 Just run makefile on windows it will detect that your on windows
 
 Also for now there wont be a compile.ps1
