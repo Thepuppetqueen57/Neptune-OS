@@ -3,8 +3,6 @@ Neptune OS is a fake Operating System.
 
 I call it a fake os because it has the same structure as an os. It has a bootloader and kernel.
 
-Bootl is the boot file for linux and bootw is the boot file for windows. I dont know if bootw works though.
-
 # How to use
 ## Linux
 ### Normal
