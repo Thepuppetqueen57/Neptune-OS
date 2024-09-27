@@ -24,6 +24,7 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
             printf("1: shutdown (Shuts down Neptune OS)\n");
             printf("2: processes (Shows the number of processes)\n");
             printf("3: run (Runs a program)\n");
+            printf("4: clear (Clears the console)\n");
         } else if (strcmp(cmd, "run") == 0) {
             printf("Would you like to run a built in program or a custom program? [B/C]: ");
             char runchoice;
@@ -85,6 +86,8 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
             } else {
                 printf("Invalid choice. Please enter 'b' for built in or 'c' for custom.\n");
             }
+        } else if (strcmp(cmd, "clear") == 0) {
+            system("clear");
         }
         
         else {
