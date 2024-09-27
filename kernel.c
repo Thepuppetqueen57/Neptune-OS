@@ -38,7 +38,7 @@ void kernel_start() {
 
 int main() {
     kernel_start();
-    printf("Do you want to configure the kernel? (Y/N): ");
+    printf("Do you want to configure the kernel? [Y/N]: ");
     char kernel_config;
     scanf(" %c", &kernel_config);
     kernel_config = tolower(kernel_config);

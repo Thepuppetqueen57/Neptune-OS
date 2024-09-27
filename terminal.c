@@ -21,9 +21,73 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
             printf("Processes: %d\n", processes[0]);
         } else if (strcmp(cmd, "help") == 0 || strcmp(cmd, "commands") == 0) {
             printf("List of commands:\n");
-            printf("1: shutdown\n");
-            printf("2: processes\n");
-        } else {
+            printf("1: shutdown (Shuts down Neptune OS)\n");
+            printf("2: processes (Shows the number of processes)\n");
+            printf("3: run (Runs a program)\n");
+        } else if (strcmp(cmd, "run") == 0) {
+            printf("Would you like to run a built in program or a custom program? [B/C]: ");
+            char runchoice;
+            scanf(" %c", &runchoice);
+            
+            runchoice = tolower(runchoice);
+
+            if (runchoice == 'b') {
+                printf("Built in programs:\n");
+                printf("1: Calculator\n");
+                
+                printf("What program would you like to run: ");
+                int programchoice;
+                scanf("%d", &programchoice);
+
+                if (programchoice == 1) {
+                    printf("Enter a math type [A/S/M/D]: ");
+                    char mathchoice;
+                    scanf(" %c", &mathchoice);
+                    mathchoice = tolower(mathchoice);
+                    if (mathchoice == 'a') {
+                        printf("Enter the first number: ");
+                        int a;
+                        scanf("%d", &a);
+                        printf("Enter the second number: ");
+                        int b;
+                        scanf("%d", &b);
+                        printf("The answer is: %d\n", a + b);
+                    } else if (mathchoice == 's') {
+                        printf("Enter the first number: ");
+                        int a;
+                        scanf("%d", &a);
+                        printf("Enter the second number: ");
+                        int b;
+                        scanf("%d", &b);
+                        printf("The answer is: %d\n", a - b);
+                    } else if (mathchoice == 'm') {
+                        printf("Enter the first number: ");
+                        int a;
+                        scanf("%d", &a);
+                        printf("Enter the second number: ");
+                        int b;
+                        scanf("%d", &b);
+                        printf("The answer is: %d\n", a * b);
+                    } else if (mathchoice == 'd') {
+                        printf("Enter the first number: ");
+                        int a;
+                        scanf("%d", &a);
+                        printf("Enter the second number: ");
+                        int b;
+                        scanf("%d", &b);
+                        printf("The answer is: %d\n", a / b);
+                    } else {
+                        printf("Invalid choice. Please enter 'a' for addition, 's' for subtraction, 'm' for multiplication, or 'd' for division.\n");
+                    }
+                }
+            } else if (runchoice == 'c') {
+                printf("Custom programs will hopefully be added eventually!\n");
+            } else {
+                printf("Invalid choice. Please enter 'b' for built in or 'c' for custom.\n");
+            }
+        }
+        
+        else {
             printf("Unknown command: %s\n", cmd);
         }
     }
