@@ -48,7 +48,7 @@ int main() {
 
     if (kernel_config == 'y') {
         printf("Configuring kernel...\n");
-        printf("Kernel configuration will hopefully be added eventually!\n");
+        printf("Kernel configuration will hopefully be added soon!\n");
     } else if (kernel_config == 'n') {
         printf("Kernel configuration not edited...\n");
 
