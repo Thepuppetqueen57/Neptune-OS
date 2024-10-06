@@ -45,7 +45,7 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
                     char mathchoice;
                     scanf(" %c", &mathchoice);
                     mathchoice = tolower(mathchoice);
-                    if (mathchoice == 'a') {
+                    if (mathchoice == 'a' || mathchoice == '+') {
                         printf("Enter the first number: ");
                         int a;
                         scanf("%d", &a);
@@ -53,7 +53,7 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
                         int b;
                         scanf("%d", &b);
                         printf("The answer is: %d\n", a + b);
-                    } else if (mathchoice == 's') {
+                    } else if (mathchoice == 's' || mathchoice == '-') {
                         printf("Enter the first number: ");
                         int a;
                         scanf("%d", &a);
@@ -61,7 +61,7 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
                         int b;
                         scanf("%d", &b);
                         printf("The answer is: %d\n", a - b);
-                    } else if (mathchoice == 'm') {
+                    } else if (mathchoice == 'm' || mathchoice == '*') {
                         printf("Enter the first number: ");
                         int a;
                         scanf("%d", &a);
@@ -69,7 +69,7 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
                         int b;
                         scanf("%d", &b);
                         printf("The answer is: %d\n", a * b);
-                    } else if (mathchoice == 'd') {
+                    } else if (mathchoice == 'd' || mathchoice == '/') {
                         printf("Enter the first number: ");
                         int a;
                         scanf("%d", &a);
