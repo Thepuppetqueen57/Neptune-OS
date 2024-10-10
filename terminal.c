@@ -25,6 +25,7 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
             printf("2: processes (Shows the number of processes)\n");
             printf("3: run (Runs a program)\n");
             printf("4: clear (Clears the console)\n");
+            printf("5: credits (List of people who helped with Neptune OS)\n");
         } else if (strcmp(cmd, "run") == 0) {
             printf("Would you like to run a built in program or a custom program? [B/C]: ");
             char runchoice;
@@ -88,6 +89,14 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
             }
         } else if (strcmp(cmd, "clear") == 0) {
             system("clear");
+        } else if (strcmp(cmd, "credits") == 0) {
+            printf("Heres a list of people who helped with Neptune OS!\n");
+            printf("All of these usernames are github usernames.\n");
+
+            printf("\n");
+
+            printf("Thepuppetqueen57: Made Neptune OS\n");
+            printf("No one has helped yet this command is just for if someone does\n");
         }
         
         else {
