@@ -28,7 +28,7 @@ add_executable(${PROJECT_NAME}
 
 # Libraries to be statically linked with executable.  
 target_link_libraries(${PROJECT_NAME}
-    math
+    m
 )
 
 ## Additional library search directories.

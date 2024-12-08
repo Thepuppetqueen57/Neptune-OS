@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include "lib/cJSON.h"
-#include "terminal.c"
+
+#include "terminal.h"
 
 char* read_config(const char *filepath) {
     FILE *file = fopen(filepath, "r");
