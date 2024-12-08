@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(Neptune-OS) # Fill in the project name.
+project(Neptune-OS)
 
 # Set C compiler
 set(CMAKE_COMPILER gcc)
@@ -16,14 +16,14 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(${PROJECT_NAME}
-    kernel.c
+    src/kernel.c
     lib/cJSON.c
     lib/seqft/common.c
     lib/seqft/evaluator.c
     lib/seqft/stack.c
     lib/seqft/tokenizer.c
-    terminal.c
-    boot.asm
+    src/terminal.c
+    src/boot.asm
 )
 
 # Libraries to be statically linked with executable.  

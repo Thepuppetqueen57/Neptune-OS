@@ -1,7 +1,7 @@
 #ifndef TERMINAL_H
 #define TERMINAL_H
 
-#include "lib/seqft/common.h"
+#include "../lib/seqft/common.h"
 #include <stddef.h>
 
 extern void highlight_error(const char* expr,

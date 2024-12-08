@@ -6,10 +6,10 @@
 // Stuff for the calculator 
 // Thanks to PsychedelicShayna for making seqft-c
 
-#include "lib/seqft/common.h"
-#include "lib/seqft/evaluator.h"
-#include "lib/seqft/stack.h"
-#include "lib/seqft/tokenizer.h"
+#include "../lib/seqft/common.h"
+#include "../lib/seqft/evaluator.h"
+#include "../lib/seqft/stack.h"
+#include "../lib/seqft/tokenizer.h"
 
 void highlight_error(const char* expr,
                      size_t      expr_len,
