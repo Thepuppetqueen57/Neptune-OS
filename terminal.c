@@ -141,15 +141,26 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
                 scanf("%d", &programchoice);
 
                 if (programchoice == 1) {
-                    printf("Enter expression: ");
                     char expr[100];
-                    scanf("%99s", expr);
-            
-                    for (int i = 0; expr[i]; i++) {
-                        expr[i] = tolower(expr[i]);
-                    }           
+                    int loop = 1;
+                    while (loop == 1) { 
+                        if (loop == 0) {
+                            break;
+                        }
 
-                    calculator(expr);
+                        printf("Enter expression: ");
+                        scanf("%99s", expr);
+            
+                        for (int i = 0; expr[i]; i++) {
+                            expr[i] = tolower(expr[i]);
+                        }           
+
+                        if (strcmp(expr, "exit") == 0) {
+                            loop = 0;
+                        } else {
+                            calculator(expr);
+                        }
+                    }
                 }
             } else if (runchoice == 'c') {
                 printf("Custom programs will hopefully be added eventually!\n");
