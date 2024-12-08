@@ -83,6 +83,8 @@ int main() {
         
         free(kerneljson);
         cJSON_Delete(json);
+    } else {
+        printf("Invalid input. Defaulting to no\n");
     }
 
     int processes = 1;
