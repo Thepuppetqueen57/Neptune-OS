@@ -176,7 +176,7 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
             printf("\n");
 
             printf("Thepuppetqueen57: Made Neptune OS\n");
-            printf("No one has helped yet this command is just for if someone does\n");
+            printf("PsychedelicShayna: Made the math library that the calculator uses\n");
         }
         
         else {
