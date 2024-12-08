@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+cmake -G Ninja -B ./out
+ninja -C ./out
+cp ./out/compile_commands.json .

@@ -3,3 +3,5 @@ Neptune
 .vscode
 *.out
 *.exe
+compile_commands.json
+out

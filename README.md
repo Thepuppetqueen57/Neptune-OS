@@ -28,3 +28,6 @@ Basically the makefile has 3 options.
 Run well it runs Neptune OS and build compiles the os without running it and clean deletes all the .o files and stuff.
 
 To use the makefile just run `make [option]` also make sure you have makefile installed.
+
+# Credits
+ Thanks to [my friend Shayna](https://github.com/PsychedelicShayna) for making the library used in the calculator

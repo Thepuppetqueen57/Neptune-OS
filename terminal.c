@@ -3,6 +3,106 @@
 #include <string.h>
 #include <ctype.h>
 
+// Stuff for the calculator 
+// Thanks to PsychedelicShayna for making seqft-c
+
+#include "lib/seqft/common.h"
+#include "lib/seqft/evaluator.h"
+#include "lib/seqft/stack.h"
+#include "lib/seqft/tokenizer.h"
+
+void highlight_error(const char* expr,
+                     size_t      expr_len,
+                     IterErr     error,
+                     size_t      indent) {
+
+    printf("\n");
+
+    char stripped[expr_len];
+    filter_whitespace(expr, expr_len, stripped);
+
+    const size_t bufsize = indent + expr_len + strlen(error.message) + 1;
+    char         padding[bufsize];
+    memset(padding, 0, bufsize);
+
+    memset(padding, ' ', indent);
+    printf(">%s%s\n", padding, stripped);
+    memset(padding, 0, bufsize);
+
+    memset(padding, '~', indent + error.index);
+    printf("%s ^\n%s\n", padding, error.message);
+    memset(padding, 0, bufsize);
+
+    memset(padding, '~', strlen(error.message));
+    printf("%s\n", padding);
+    memset(padding, 0, bufsize);
+
+    printf("\n\n");
+}
+
+void calculator(const char* expr) {
+    Tokenizer* t   = Tokenizer_new();
+    Sft*       sft = Sft_new();
+
+    size_t expr_len = strlen(expr);
+
+    if(!expr_len) {
+        Tokenizer_free(t);
+        return;
+    }
+
+    TokenArray* token_array = Tokenizer_parse(t, expr, expr_len);
+
+    // char buffer[256];
+    //
+    // for(int i = 0; i < token_array->count; ++i) {
+    //     Token  t   = token_array->tokens[i];
+    //     size_t len = Token_toString(&t, buffer);
+    //     printf("Token '%s'\n", buffer);
+    // }
+    //
+    // return;
+
+#ifdef DEBUG
+    if(token_array) {
+
+        for(int i = 0; i < token_array->count; ++i) {
+            Token* t = &token_array->tokens[i];
+            Token_print(t);
+            if(t->func) {
+                printf("Has func: %s\n", t->func);
+            }
+        }
+
+        // TokenArray_freeMembers(token_array);
+        // free(token_array);
+    }
+#endif
+
+    if(t->error) {
+        highlight_error(expr, expr_len, *t->error, 2);
+        TokenArray_free(token_array);
+        Tokenizer_free(t);
+        return;
+    }
+
+    if(token_array) {
+        double result = 0;
+
+        SftError* error =Sft_evalTokens(sft, token_array, &result);
+
+        if(error) {
+          printf("%s", error->message);
+        } else {
+          printf("Result: %f\n", result);
+        }
+
+    }
+
+    TokenArray_free(token_array);
+    Tokenizer_free(t);
+}
+
 int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
     char cmd[100];
     printf("Welcome to Neptune OS! Type 'help' for a list of commands.\n");
@@ -42,45 +142,15 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
                 scanf("%d", &programchoice);
 
                 if (programchoice == 1) {
-                    printf("Enter a math type [A/S/M/D]: ");
-                    char mathchoice;
-                    scanf(" %c", &mathchoice);
-                    mathchoice = tolower(mathchoice);
-                    if (mathchoice == 'a' || mathchoice == '+') {
-                        printf("Enter the first number: ");
-                        int a;
-                        scanf("%d", &a);
-                        printf("Enter the second number: ");
-                        int b;
-                        scanf("%d", &b);
-                        printf("The answer is: %d\n", a + b);
-                    } else if (mathchoice == 's' || mathchoice == '-') {
-                        printf("Enter the first number: ");
-                        int a;
-                        scanf("%d", &a);
-                        printf("Enter the second number: ");
-                        int b;
-                        scanf("%d", &b);
-                        printf("The answer is: %d\n", a - b);
-                    } else if (mathchoice == 'm' || mathchoice == '*') {
-                        printf("Enter the first number: ");
-                        int a;
-                        scanf("%d", &a);
-                        printf("Enter the second number: ");
-                        int b;
-                        scanf("%d", &b);
-                        printf("The answer is: %d\n", a * b);
-                    } else if (mathchoice == 'd' || mathchoice == '/') {
-                        printf("Enter the first number: ");
-                        int a;
-                        scanf("%d", &a);
-                        printf("Enter the second number: ");
-                        int b;
-                        scanf("%d", &b);
-                        printf("The answer is: %d\n", a / b);
-                    } else {
-                        printf("Invalid choice. Please enter 'a' for addition, 's' for subtraction, 'm' for multiplication, or 'd' for division.\n");
-                    }
+                    printf("Enter expression: ");
+                    char expr[100];
+                    scanf("%99s", expr);
+            
+                    for (int i = 0; expr[i]; i++) {
+                        expr[i] = tolower(expr[i]);
+                    }           
+
+                    calculator(expr);
                 }
             } else if (runchoice == 'c') {
                 printf("Custom programs will hopefully be added eventually!\n");

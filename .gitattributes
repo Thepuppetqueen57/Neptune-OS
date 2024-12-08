@@ -1,3 +1,12 @@
 # Makes the github language graph ignore cJSON
 lib/cJSON.c linguist-vendored
 lib/cJSON.h linguist-vendored
+lib/seqft/common.c linguist-vendored
+lib/seqft/common.h linguist-vendored
+lib/seqft/evaluator.c linguist-vendored
+lib/seqft/evaluator.h linguist-vendored
+lib/seqft/main.c linguist-vendored
+lib/seqft/stack.c linguist-vendored
+lib/seqft/stack.h linguist-vendored
+lib/seqft/tokenizer.c linguist-vendored
+lib/seqft/tokenizer.h linguist-vendored
