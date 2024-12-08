@@ -1,3 +1,5 @@
 *.o
 Neptune
 .vscode
+*.out
+*.exe
