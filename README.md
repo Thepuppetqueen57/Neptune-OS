@@ -18,7 +18,7 @@ Windows and mac are not supported and will almost definitely never be.
 
 This is just a simple hobby project I am making for fun. I dont wanna bother myself with that stuff.
 
-Although theres a chance it already works I havent tested
+Although theres a chance it already works but me and my friend who is on windows just havent figured out how to get it to compile correctly yet.
 
 # Credits
  Thanks to [my friend Shayna](https://github.com/PsychedelicShayna) for making the library used in the calculator
