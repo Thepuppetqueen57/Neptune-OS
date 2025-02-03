@@ -20,5 +20,18 @@ This is just a simple hobby project I am making for fun. I dont wanna bother mys
 
 Although theres a chance it already works but me and my friend who is on windows just havent figured out how to get it to compile correctly yet.
 
+## Docker
+To run on docker you need to run `sudo docker build -t neptune ./`
+
+Then run `sudo docker run -it neptune`
+
+The -it is very important because if you dont put it there well..
+
+Input handling gets a little silly. Thats all I'm gonna say.
+
+I plan on adding a docker image to every new release (if thats even possible)
+
+Cuz its kinda pointless if you have to make it yourself
+
 # Credits
  Thanks to [my friend Shayna](https://github.com/PsychedelicShayna) for making the library used in the calculator
