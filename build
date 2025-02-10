@@ -5,9 +5,6 @@ RESET = \e[0m
 GREEN = \e[92m
 
 # main
-echo "#############################################"
-echo "#   build - contributed by naturelessGit    #"
-echo "#############################################"
 echo "[i] Running cmake script.. (verbose: cmake -G Ninja -B ./out)"
 cmake -G Ninja -B ./out
 echo "[i] Running ninja script.. (verbose: ninja -C ./out)"

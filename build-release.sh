@@ -5,9 +5,6 @@ RESET = \e[0m
 GREEN = \e[92m
 
 # main
-echo "########################################################"
-echo "#   build_release.sh - contributed by naturelessGit    #"
-echo "########################################################"
 echo "[i] Running build.. (verbose: ./build)"
 ./build
 echo "[i] Creating directory \"Neptune\"... (verbose: mkdir Neptune)"
