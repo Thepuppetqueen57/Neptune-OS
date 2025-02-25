@@ -9,6 +9,6 @@ echo "[i] Running cmake script.. (verbose: cmake -G Ninja -B ./out)"
 cmake -G Ninja -B ./out
 echo "[i] Running ninja script.. (verbose: ninja -C ./out)"
 ninja -C ./out
-echo "[i] Copying files... (verbose: cp ./out/compile_commands.json .")
+echo "[i] Copying files... (verbose: cp ./out/compile_commands.json ."
 cp ./out/compile_commands.json .
 echo "${GREEN}[+] Build done!${RESET}"
