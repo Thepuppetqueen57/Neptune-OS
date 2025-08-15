@@ -1,3 +1,12 @@
+# Disclaimer
+Neptune OS will probably never be worked on again.
+
+I have more important projects to work on.
+
+And also I really dont like cmake and at one point I made the mistake of switching from makefile to cmake for neptune os.
+
+Developing neptune os is annoying since I switched to cmake.
+
 # Neptune OS
 Neptune OS is a fake Operating System.
 
