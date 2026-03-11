@@ -1,12 +1,3 @@
-# Disclaimer
-Neptune OS will probably never be worked on again.
-
-I have more important projects to work on.
-
-And also I really dont like cmake and at one point I made the mistake of switching from makefile to cmake for neptune os.
-
-Developing neptune os is annoying since I switched to cmake.
-
 # Neptune OS
 Neptune OS is a fake Operating System.
 
@@ -18,29 +9,22 @@ I call it a fake os because it has the same structure as an os. It has a bootloa
 Download the latest release and run it (lol)
 
 ### Compiling
-Download the source and then install gcc and nasm and then go into your terminal and run `./build` in the directory you put neptune in.
+Download the source and then install gcc and nasm and then go into your terminal and run `make run` in the directory you put neptune in.
 
-If it doesnt work then install cmake I think it comes preinstalled with linux tho.
+If it doesnt work then install makefile I think it comes preinstalled with linux tho.
 
 ## Windows/Mac
 Windows and mac are not supported and will almost definitely never be.
 
 This is just a simple hobby project I am making for fun. I dont wanna bother myself with that stuff.
 
-Although theres a chance it already works but me and my friend who is on windows just havent figured out how to get it to compile correctly yet.
+# Makefile
+Basically the makefile has 3 options.
 
-## Docker
-To run on docker you need to run `sudo docker build -t neptune ./`
+- Run
+- Build
+- Clean
 
-Then run `sudo docker run -it neptune`
+Run well it runs Neptune OS and build compiles the os without running it and clean deletes all the .o files and stuff.
 
-The -it is very important because if you dont put it there well..
-
-Input handling gets a little silly. Thats all I'm gonna say.
-
-I plan on adding a docker image to every new release (if thats even possible)
-
-Cuz its kinda pointless if you have to make it yourself
-
-# Credits
- Thanks to [my friend Shayna](https://github.com/PsychedelicShayna) for making the library used in the calculator
+To use the makefile just run `make [option]` also make sure you have makefile installed.
