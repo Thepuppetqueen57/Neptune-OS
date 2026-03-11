@@ -17,7 +17,7 @@ build:
 	@gcc -m32 -c lib/seqft/evaluator.c -o evaluator.o
 	@gcc -m32 -c lib/seqft/stack.c -o stack.o
 	@gcc -m32 -c lib/seqft/common.c -o common.o
-	@gcc -m32 boot.o kernel.o terminal.o cJSON.o tokenizer.o evaluator.o stack.o common.o -o Neptune -lm
+	@gcc -m32 boot.o kernel.o terminal.o cJSON.o tokenizer.o evaluator.o stack.o common.o -o Neptune -lm -no-pie -e bootloader_start
 
 	@$(MAKE) --no-print-directory clean1
 

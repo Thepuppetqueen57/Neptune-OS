@@ -33,12 +33,8 @@ char* read_config(const char *filepath) {
     return content;
 }
 
-void kernel_start() {
-    printf("Kernel has started!\n");
-}
-
 int main() {
-    kernel_start();
+    printf("Kernel has started!\n");
     printf("Do you want to configure the kernel? [Y/N]: ");
     char kernel_config;
     scanf(" %c", &kernel_config);
