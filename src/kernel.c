@@ -76,7 +76,7 @@ int main() {
             printf("Error: max-threads-per-process is not defined or there was an error parsing!\n");
             exit(1);
         }
-        
+
         free(kerneljson);
         cJSON_Delete(json);
     } else {

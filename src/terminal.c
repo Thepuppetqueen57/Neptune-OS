@@ -128,13 +128,13 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
             printf("Would you like to run a built in program or a custom program? [B/C]: ");
             char runchoice;
             scanf(" %c", &runchoice);
-            
+
             runchoice = tolower(runchoice);
 
             if (runchoice == 'b') {
                 printf("Built in programs:\n");
                 printf("1: Calculator\n");
-                
+
                 printf("What program would you like to run: ");
                 int programchoice;
                 scanf("%d", &programchoice);
@@ -149,10 +149,10 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
 
                         printf("Enter expression: ");
                         scanf("%99s", expr);
-            
+
                         for (int i = 0; expr[i]; i++) {
                             expr[i] = tolower(expr[i]);
-                        }           
+                        }
 
                         if (strcmp(expr, "exit") == 0) {
                             loop = 0;
