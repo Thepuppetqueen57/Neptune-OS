@@ -16,7 +16,7 @@ void highlight_error(const char* expr,
                      size_t      indent) {
 
     printf("\n");
-char stripped[expr_len];
+    char stripped[expr_len];
     filter_whitespace(expr, expr_len, stripped);
 
     const size_t bufsize = indent + expr_len + strlen(error.message) + 1;
@@ -177,7 +177,7 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
             printf("Thepuppetqueen57: Made Neptune OS\n");
             printf("PsychedelicShayna: Made the math library that the calculator uses\n");
         }
-        
+
         else {
             printf("Unknown command: %s\n", cmd);
         }
