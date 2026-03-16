@@ -8,7 +8,6 @@
 
 #include "../lib/seqft/common.h"
 #include "../lib/seqft/evaluator.h"
-#include "../lib/seqft/stack.h"
 #include "../lib/seqft/tokenizer.h"
 
 void highlight_error(const char* expr,
@@ -91,9 +90,9 @@ void calculator(const char* expr) {
         SftError* error =Sft_evalTokens(sft, token_array, &result);
 
         if(error) {
-          printf("%s", error->message);
+            printf("%s", error->message);
         } else {
-          printf("Result: %f\n", result);
+            printf("Result: %f\n", result);
         }
 
     }
