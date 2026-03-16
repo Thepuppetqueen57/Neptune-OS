@@ -9,15 +9,22 @@ build:
 		rm -f boot.o kernel.o cJSON.o terminal.o tokenizer.o evaluator.o stack.o common.o; \
 	fi
 
+#   Compile source files
 	@nasm -f elf32 src/boot.asm -o boot.o
 	@gcc -m32 -c src/kernel.c -o kernel.o
 	@gcc -m32 -c src/terminal.c -o terminal.o
+
+#   Compile library files
 	@gcc -m32 -c lib/cJSON.c -o cJSON.o
 	@gcc -m32 -c lib/seqft/tokenizer.c -o tokenizer.o
 	@gcc -m32 -c lib/seqft/evaluator.c -o evaluator.o
 	@gcc -m32 -c lib/seqft/stack.c -o stack.o
 	@gcc -m32 -c lib/seqft/common.c -o common.o
-	@gcc -m32 boot.o kernel.o terminal.o cJSON.o tokenizer.o evaluator.o stack.o common.o -o Neptune -lm -no-pie -e bootloader_start
+
+#   Link object files into final executable
+	@gcc -m32 boot.o kernel.o terminal.o \
+		cJSON.o tokenizer.o evaluator.o stack.o common.o \
+		-o Neptune -lm -no-pie -e bootloader_start
 
 	@$(MAKE) --no-print-directory clean1
 
