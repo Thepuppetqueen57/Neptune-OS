@@ -63,8 +63,8 @@ int main() {
             maxprocessesint = (int)maxprocesses->valueint;
             printf("Max Processes: %d\n", maxprocessesint);
         } else {
-            printf("Error: max-processes is not defined or there was an error parsing!\n");
-            exit(1);
+            maxprocessesint = 10;
+            printf("Error: max-processes is not defined or there was an error parsing! Defaulting to 10.\n");
         }
 
         // Get max threads per process value from kernel.json
@@ -73,8 +73,8 @@ int main() {
             maxthreadsperprocessint = (int)maxthreadsperprocess->valueint;
             printf("Max Threads per Process: %d\n", maxthreadsperprocessint);
         } else {
-            printf("Error: max-threads-per-process is not defined or there was an error parsing!\n");
-            exit(1);
+            maxthreadsperprocessint = 10;
+            printf("Error: max-threads-per-process is not defined or there was an error parsing! Defaulting to 10.\n");
         }
 
         free(kerneljson);
