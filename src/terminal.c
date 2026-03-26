@@ -61,6 +61,11 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
             printf("4: clear (Clears the console)\n");
             printf("5: credits (List of people who helped with Neptune OS)\n");
         } else if (strcmp(cmd, "run") == 0) {
+            if (processes[0] >= maxprocesses) {
+                printf("Error: Maximum number of processes reached. Cannot run new program.\n");
+                continue;
+            }
+
             printf("Would you like to run a built in program or a custom program? [B/C]: ");
             char runchoice;
             scanf(" %c", &runchoice);
