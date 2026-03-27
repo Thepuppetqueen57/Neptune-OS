@@ -1,5 +1,6 @@
 #include "common.h"
 #include <stdio.h>
+#include <stdint.h>
 
 #ifdef DEBUG
     #define dprintf(s, ...) printf(s, ...)
