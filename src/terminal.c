@@ -39,10 +39,16 @@ void highlight_error(const char* expr,
 
 int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
     char cmd[100];
+
     printf("Welcome to Neptune OS! Type 'help' for a list of commands.\n");
     while (1) {
+        // Flush stdin to prevent leftover input from previous commands
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF);
+
         printf("> ");
-        scanf("%99s", cmd);
+        fgets(cmd, sizeof(cmd), stdin);
+        cmd[strcspn(cmd, "\n")] = '\0';
 
         for (int i = 0; cmd[i]; i++) {
             cmd[i] = tolower(cmd[i]);
