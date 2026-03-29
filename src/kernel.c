@@ -43,39 +43,39 @@ int kernel_main() {
     int maxprocessesint;
     int maxthreadsperprocessint;
 
+    printf("Checking kernel configuration...\n");
+    char* kerneljson = read_config("config/kernel.json");
+    cJSON *json = cJSON_Parse(kerneljson);
+    if (json == NULL) {
+        printf("Error parsing JSON.\n");
+        return 1;
+    }
+
+    // Get max processes value from kernel.json
+    cJSON *maxprocesses = cJSON_GetObjectItem(json, "max-processes");
+    if (cJSON_IsNumber(maxprocesses)) {
+        maxprocessesint = (int)maxprocesses->valueint;
+        printf("Max Processes: %d\n", maxprocessesint);
+    } else {
+        maxprocessesint = 10;
+        printf("Error: max-processes is not defined or there was an error parsing! Defaulting to 10.\n");
+    }
+
+    // Get max threads per process value from kernel.json
+    cJSON *maxthreadsperprocess = cJSON_GetObjectItem(json, "max-threads-per-process");
+    if (cJSON_IsNumber(maxthreadsperprocess)) {
+        maxthreadsperprocessint = (int)maxthreadsperprocess->valueint;
+        printf("Max Threads per Process: %d\n", maxthreadsperprocessint);
+    } else {
+        maxthreadsperprocessint = 10;
+        printf("Error: max-threads-per-process is not defined or there was an error parsing! Defaulting to 10.\n");
+    }
+
     if (kernel_config == 'y') {
         printf("Configuring kernel...\n");
         printf("Kernel configuration will hopefully be added soon!\n");
     } else if (kernel_config == 'n') {
         printf("Kernel configuration not edited...\n");
-
-        printf("Checking kernel configuration...\n");
-        char* kerneljson = read_config("config/kernel.json");
-        cJSON *json = cJSON_Parse(kerneljson);
-        if (json == NULL) {
-            printf("Error parsing JSON.\n");
-            return 1;
-        }
-
-        // Get max processes value from kernel.json
-        cJSON *maxprocesses = cJSON_GetObjectItem(json, "max-processes");
-        if (cJSON_IsNumber(maxprocesses)) {
-            maxprocessesint = (int)maxprocesses->valueint;
-            printf("Max Processes: %d\n", maxprocessesint);
-        } else {
-            maxprocessesint = 10;
-            printf("Error: max-processes is not defined or there was an error parsing! Defaulting to 10.\n");
-        }
-
-        // Get max threads per process value from kernel.json
-        cJSON *maxthreadsperprocess = cJSON_GetObjectItem(json, "max-threads-per-process");
-        if (cJSON_IsNumber(maxthreadsperprocess)) {
-            maxthreadsperprocessint = (int)maxthreadsperprocess->valueint;
-            printf("Max Threads per Process: %d\n", maxthreadsperprocessint);
-        } else {
-            maxthreadsperprocessint = 10;
-            printf("Error: max-threads-per-process is not defined or there was an error parsing! Defaulting to 10.\n");
-        }
 
         free(kerneljson);
         cJSON_Delete(json);
