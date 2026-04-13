@@ -44,7 +44,6 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
     while (1) {
         // Flush stdin to prevent leftover input from previous commands
         int c;
-        while ((c = getchar()) != '\n' && c != EOF);
 
         printf("> ");
         fgets(cmd, sizeof(cmd), stdin);
@@ -73,8 +72,9 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
             }
 
             printf("Would you like to run a built in program or a custom program? [B/C]: ");
-            char runchoice;
-            scanf(" %c", &runchoice);
+            char runchoice_buf[10];
+            fgets(runchoice_buf, sizeof(runchoice_buf), stdin);
+            char runchoice = tolower(runchoice_buf[0]);
 
             runchoice = tolower(runchoice);
 
@@ -83,8 +83,9 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
                 printf("1: Calculator\n");
 
                 printf("What program would you like to run: ");
-                int programchoice;
-                scanf("%d", &programchoice);
+                char programchoice_buf[10];
+                fgets(programchoice_buf, sizeof(programchoice_buf), stdin);
+                int programchoice = atoi(programchoice_buf);
 
                 switch (programchoice) {
                     case 1:
