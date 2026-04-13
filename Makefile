@@ -6,20 +6,20 @@ build:
 	@$(MAKE) --no-print-directory cleanobjs
 
 	@echo "Compiling source files"
-	@gcc -c src/boot.c -o boot.o
-	@gcc -c src/kernel.c -o kernel.o
-	@gcc -c src/terminal.c -o terminal.o
-	@gcc -c src/programs/calculator.c -o calculator.o
+	@clang -c src/boot.c -o boot.o
+	@clang -c src/kernel.c -o kernel.o
+	@clang -c src/terminal.c -o terminal.o
+	@clang -c src/programs/calculator.c -o calculator.o
 
 	@echo "Building libraries..."
-	@gcc -c lib/cJSON.c -o cJSON.o
-	@gcc -c lib/seqft/tokenizer.c -o tokenizer.o
-	@gcc -c lib/seqft/evaluator.c -o evaluator.o
-	@gcc -c lib/seqft/stack.c -o stack.o
-	@gcc -c lib/seqft/common.c -o common.o
+	@clang -c lib/cJSON.c -o cJSON.o
+	@clang -c lib/seqft/tokenizer.c -o tokenizer.o
+	@clang -c lib/seqft/evaluator.c -o evaluator.o
+	@clang -c lib/seqft/stack.c -o stack.o
+	@clang -c lib/seqft/common.c -o common.o
 
 	@echo "Linking compiled files..."
-	@gcc boot.o kernel.o terminal.o calculator.o \
+	@clang boot.o kernel.o terminal.o calculator.o \
 		cJSON.o tokenizer.o evaluator.o stack.o common.o \
 		-o Neptune \
 		-lm -no-pie
