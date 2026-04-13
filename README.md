@@ -11,7 +11,7 @@ Download the latest release and run it (lol)
 There are not builds for mac so you will have to compile it yourself
 
 ### Compiling
-Download the source and then install clang and then go into your terminal and run `make run` in the directory you put neptune in.
+Download the source and then install LLVM (has clang) and then go into your terminal and run `make run` in the directory you put neptune in.
 
 If it doesnt work then install makefile I think it comes preinstalled with linux tho.
 
