@@ -26,7 +26,13 @@ char* read_config(const char *filepath) {
         return NULL;
     }
 
-    fread(content, sizeof(char), filesize, file);
+    size_t read = fread(content, sizeof(char), filesize, file);
+    if (read != (size_t)filesize) {
+        printf("Error: File read incomplete\n");
+        free(content);
+        fclose(file);
+        return NULL;
+    }
     content[filesize] = '\0';
 
     fclose(file);
@@ -37,8 +43,9 @@ int kernel_main() {
     printf("Kernel has started!\n");
     printf("Do you want to configure the kernel? [Y/N]: ");
     char kernel_config;
-    scanf(" %c", &kernel_config);
-    kernel_config = tolower(kernel_config);
+    char line[4];
+    fgets(line, sizeof(line), stdin);
+    kernel_config = tolower(line[0]);
 
     int maxprocessesint;
     int maxthreadsperprocessint;
@@ -71,16 +78,17 @@ int kernel_main() {
         printf("Error: max-threads-per-process is not defined or there was an error parsing! Defaulting to 10.\n");
     }
 
-    if (kernel_config == 'y') {
+    if (tolower(kernel_config) == 'y') {
         printf("Configuring kernel...\n");
         printf("Kernel configuration will hopefully be added soon!\n");
-    } else if (kernel_config == 'n') {
-        printf("Kernel configuration not edited...\n");
 
         free(kerneljson);
         cJSON_Delete(json);
     } else {
-        printf("Invalid input. Defaulting to no\n");
+        printf("Kernel configuration not edited...\n");
+
+        free(kerneljson);
+        cJSON_Delete(json);
     }
 
     int processes = 1;

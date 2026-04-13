@@ -1,5 +1,5 @@
 # Default target
-all: run
+all: build
 
 # Targets
 build:

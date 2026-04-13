@@ -62,7 +62,8 @@ void calculator() {
         }
 
         printf("Enter expression: ");
-        scanf("%99s", expr);
+        fgets(expr, sizeof(expr), stdin);
+        expr[strcspn(expr, "\n")] = '\0';
 
         for (int i = 0; expr[i]; i++) {
             expr[i] = tolower(expr[i]);

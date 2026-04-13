@@ -15,11 +15,13 @@ void highlight_error(const char* expr,
                      size_t      indent) {
 
     printf("\n");
-    char stripped[expr_len];
+    char *stripped = malloc(expr_len + 1);
+    if (!stripped) return;
     filter_whitespace(expr, expr_len, stripped);
 
-    const size_t bufsize = indent + expr_len + strlen(error.message) + 1;
-    char         padding[bufsize];
+    const size_t bufsize = indent + expr_len + strlen(error.message) + 2;
+    char *padding = malloc(bufsize);
+    if (!padding) { free(stripped); return; }
     memset(padding, 0, bufsize);
 
     memset(padding, ' ', indent);
@@ -32,8 +34,9 @@ void highlight_error(const char* expr,
 
     memset(padding, '~', strlen(error.message));
     printf("%s\n", padding);
-    memset(padding, 0, bufsize);
 
+    free(stripped);
+    free(padding);
     printf("\n\n");
 }
 
@@ -100,7 +103,8 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
                 printf("Invalid choice. Please enter 'b' for built in or 'c' for custom.\n");
             }
         } else if (strcmp(cmd, "clear") == 0) {
-            system("clear");
+            printf("\033[2J\033[H");
+            fflush(stdout);
         } else if (strcmp(cmd, "credits") == 0) {
             printf("Heres a list of people who helped with Neptune OS!\n");
             printf("All of these usernames are github usernames.\n");
