@@ -1,25 +1,28 @@
 # Default target
 all: build
 
+# Compiler settings
+CC = clang
+
 # Targets
 build:
 	@$(MAKE) --no-print-directory cleanobjs
 
 	@echo "Compiling source files"
-	@clang -c src/boot.c -o boot.o
-	@clang -c src/kernel.c -o kernel.o
-	@clang -c src/terminal.c -o terminal.o
-	@clang -c src/programs/calculator.c -o calculator.o
+	@$(CC) -c src/boot.c -o boot.o
+	@$(CC) -c src/kernel.c -o kernel.o
+	@$(CC) -c src/terminal.c -o terminal.o
+	@$(CC) -c src/programs/calculator.c -o calculator.o
 
 	@echo "Building libraries..."
-	@clang -c lib/cJSON.c -o cJSON.o
-	@clang -c lib/seqft/tokenizer.c -o tokenizer.o
-	@clang -c lib/seqft/evaluator.c -o evaluator.o
-	@clang -c lib/seqft/stack.c -o stack.o
-	@clang -c lib/seqft/common.c -o common.o
+	@$(CC) -c lib/cJSON.c -o cJSON.o
+	@$(CC) -c lib/seqft/tokenizer.c -o tokenizer.o
+	@$(CC) -c lib/seqft/evaluator.c -o evaluator.o
+	@$(CC) -c lib/seqft/stack.c -o stack.o
+	@$(CC) -c lib/seqft/common.c -o common.o
 
 	@echo "Linking compiled files..."
-	@clang boot.o kernel.o terminal.o calculator.o \
+	@$(CC) boot.o kernel.o terminal.o calculator.o \
 		cJSON.o tokenizer.o evaluator.o stack.o common.o \
 		-o Neptune \
 		-lm -no-pie
