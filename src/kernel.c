@@ -55,6 +55,7 @@ int kernel_main() {
     cJSON *json = cJSON_Parse(kerneljson);
     if (json == NULL) {
         printf("Error parsing JSON.\n");
+        if (kerneljson) free(kerneljson);
         return 1;
     }
 
