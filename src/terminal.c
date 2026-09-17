@@ -52,6 +52,9 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
         fgets(cmd, sizeof(cmd), stdin);
         cmd[strcspn(cmd, "\n")] = '\0';
 
+        char orig[100];
+        strcpy(orig, cmd); // Keep the original text so the echo command can work
+
         for (int i = 0; cmd[i]; i++) {
             cmd[i] = tolower(cmd[i]);
         }
@@ -68,6 +71,7 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
             printf("3: run (Runs a program)\n");
             printf("4: clear (Clears the console)\n");
             printf("5: credits (List of people who helped with Neptune OS)\n");
+            printf("6: echo (Prints the text you type after it)\n");
         } else if (strcmp(cmd, "run") == 0) {
             if (processes[0] >= maxprocesses) {
                 printf("Error: Maximum number of processes reached. Cannot run new program.\n");
@@ -113,6 +117,12 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
 
             printf("Thepuppetqueen57: Made Neptune OS\n");
             printf("PsychedelicShayna: Made the math library that the calculator uses\n");
+        } else if (strncmp(cmd, "echo", 4) == 0 && (cmd[4] == ' ' || cmd[4] == '\0')) {
+            if (cmd[4] == ' ') {
+                printf("%s\n", orig + 5); // Skip past "echo " and print the rest as-is
+            } else {
+                printf("\n");
+            }
         }
 
         else {
