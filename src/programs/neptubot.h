@@ -23,6 +23,15 @@ static inline void neptubot() {
             prompt[i] = tolower(prompt[i]);
         }
 
+        // Remove every character that isn't a letter or a space
+        int j = 0;
+        for (int i = 0; prompt[i]; i++) {
+            if ((prompt[i] >= 'a' && prompt[i] <= 'z') || prompt[i] == ' ') {
+                prompt[j++] = prompt[i];
+            }
+        }
+        prompt[j] = '\0';
+
         if (strcmp(prompt, "exit") == 0) {
             printf("Goodbye!\n");
             break;
