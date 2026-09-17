@@ -10,14 +10,14 @@
 #include "../../lib/seqft/tokenizer.h"
 #include "../terminal.h"
 
-inline void Sft_cleanup(Sft* sft) {
+static inline void Sft_cleanup(Sft* sft) {
     if (!sft) return;
     Stack_free(sft->operator_stack);
     Stack_free(sft->number_stack);
     free(sft);
 }
 
-inline void calculate(const char* expr) {
+static inline void calculate(const char* expr) {
     Tokenizer* t   = Tokenizer_new();
     Sft*       sft = Sft_new();
 
@@ -56,7 +56,7 @@ inline void calculate(const char* expr) {
     Tokenizer_free(t);
 }
 
-inline void calculator() {
+static inline void calculator() {
     char expr[100];
     int loop = 1;
     while (loop == 1) {

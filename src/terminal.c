@@ -8,6 +8,7 @@
 
 #include "../lib/seqft/common.h"
 #include "programs/calculator.h"
+#include "programs/neptubot.h"
 
 void highlight_error(const char* expr,
                      size_t      expr_len,
@@ -88,6 +89,7 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
             if (runchoice == 'b') {
                 printf("Built in programs:\n");
                 printf("1: Calculator\n");
+                printf("2: Neptubot\n");
 
                 printf("What program would you like to run: ");
                 char programchoice_buf[10];
@@ -97,6 +99,9 @@ int osmain(int *processes, int maxprocesses, int maxthreadsperprocess) {
                 switch (programchoice) {
                     case 1:
                         calculator();
+                        break;
+                    case 2:
+                        neptubot();
                         break;
                     default:
                         printf("Invalid choice. Please enter a valid program number.\n");
