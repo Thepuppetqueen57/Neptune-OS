@@ -12,7 +12,6 @@ build:
 	@$(CC) -c src/boot.c -o boot.o
 	@$(CC) -c src/kernel.c -o kernel.o
 	@$(CC) -c src/terminal.c -o terminal.o
-	@$(CC) -c src/programs/calculator.c -o calculator.o
 
 	@echo "Building libraries..."
 	@$(CC) -c lib/cJSON.c -o cJSON.o
@@ -22,7 +21,7 @@ build:
 	@$(CC) -c lib/seqft/common.c -o common.o
 
 	@echo "Linking compiled files..."
-	@$(CC) boot.o kernel.o terminal.o calculator.o \
+	@$(CC) boot.o kernel.o terminal.o \
 		cJSON.o tokenizer.o evaluator.o stack.o common.o \
 		-o Neptune \
 		-lm -no-pie
