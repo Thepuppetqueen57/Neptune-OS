@@ -38,6 +38,13 @@ static inline void neptubot() {
         } else if (strcmp(prompt, "what is neptune os") == 0) {
             printf("Neptune OS is a fake operating system written in C.\n");
             printf("It's not a real OS but is meant to somewhat resemble one.\n");
+        } else if (strcmp(prompt, "what is neptubot") == 0) {
+            printf("Neptubot is a simple chatbot written for Neptune OS.\n");
+            printf("It uses hardcoded responses.\n");
+            printf("Its made to answer question you may have about Neptune OS.\n");
+        } else if (strcmp(prompt, "who made neptune os") == 0) {
+            printf("Neptune OS was made by an indie dev who goes by Puppet online.\n");
+            printf("You can find her projects at https://puppet57.xyz\n");
         }
 
         else {
